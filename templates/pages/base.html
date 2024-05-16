@@ -57,7 +57,7 @@
                 </a>
                 {% if user.is_authenticated %}
 
-                <a href="/getyourdrives" onclick="handleSidebar()" class="side-menu regdriveclass">
+                <a href="/yourdrives" onclick="handleSidebar()" class="side-menu regdriveclass">
 
                   <div class="side-menu-item">
                     <i class="far fa-calendar-check"></i>
@@ -65,6 +65,13 @@
                   </div>
                 </a>
                 {% endif %}
+                <a href="http://127.0.0.1:8001/" onclick="handleSidebar()" class="side-menu profileclass">
+                    <div class="side-menu-item">
+                      <i class="far fa-calendar-check"></i>
+                      <p> Attempt Mock Test</p>
+                    </div>
+                </a>
+
                 {% if user.profile.isCordinator %}
 
                 <a href="/cordinator" onclick="handleSidebar()" class="side-menu cordclass">
