@@ -32,7 +32,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.http import urlsafe_base64_decode
-
+from django.utils.datastructures import MultiValueDictKeyError
+from django.http import HttpResponse
 
 
 def placement_statistics_view(request):
@@ -71,6 +72,17 @@ def reasoning(request):
 
 def cquiz(request):
     return render(request, 'pages/cquiz.html')
+
+def import_placedstudents(request):
+    if request.method == 'POST':
+        try:
+            uploaded_file = request.FILES['file']
+            # Process the uploaded file here
+            return HttpResponse('File uploaded successfully.')
+        except MultiValueDictKeyError:
+            return HttpResponse('No file was uploaded.')
+
+    return render(request, 'your_template.html')
 
 
 @csrf_exempt
